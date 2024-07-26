@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body
+{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F4F5FF;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.btn-alert
+{
+  padding: .5rem 1rem;
+  border: none;
+  background: #9756ff;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.alert-card 
+{
+  position: fixed;
+  transform: scale(.65);
+  z-index: 10000;
+  inset: 2.7% -500px auto auto;
+  animation: vibrar 4.5s infinite;
+  transition: .2s all ease-in-out;
+}
+
+.alert-card.active {right: -3rem;}
+
+@keyframes vibrar 
+{
+  0%, 100% {transform: scale(.65) translateX(0);}
+  10%, 60% {transform: scale(.65) translateX(10px);}
+  20%, 70% {transform: scale(.65) translateX(-15px);}
+  40%, 80% {transform: scale(.65) translateX(15px);}
+  50%, 90% {transform: scale(.65) translateX(-10px);}
+}
+
+.bar-load
+{
+  position: absolute;
+  width: 0;
+  animation: none;
+}
+
+.alert-card.active .bar-load
+{
+  width: 498px;
+  height: 3px; 
+  inset: auto auto 0 0;
+  animation: timerPercent 4.5s;
+}
+
+@keyframes timerPercent 
+{
+  0% {width: 498px;}
+  100% {width: 0px;}
+}
+
+.b-out
+{
+    width: 500px;
+    height: 100px;
+    background: #cccccc;
+    padding: 1px;
+    clip-path: polygon(6% 0, 100% 0, 100% 68%, 94% 100%, 0 100%, 0 32%);
+    cursor: pointer;
+}
+
+.b-out .b-in
+{
+    width: 498px;
+    height: 98px;
+    background: #F4F5FF;
+    clip-path: polygon(6% 0, 100% 0, 100% 68%, 94% 100%, 0 100%, 0 32%);
+    position: relative;
+}
+
+.alert
+{
+    display: flex;
+    flex-direction: row;
+    clip-path: polygon(5% 0, 100% 0, 100% 70%, 95% 100%, 0 100%, 0 30%);
+    overflow: hidden;
+    position: relative;
+}
+
+.alert .btn-close 
+{
+    position: absolute;
+    width: 150px;
+    height: 98px;
+    clip-path: polygon(40% 0, 90% 0, 60% 100%, 10% 100%);
+    padding: .9rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    inset: 98px 44px auto auto;
+    z-index: 1000;
+    transition: .3s all linear;
+}
+
+.b-out:hover .btn-close {inset: 0px 0px auto auto;}
+
+.alert .msg
+{
+    width: 348px;
+    height: 98px;
+    padding: .9rem 1rem;
+    font-size: .81rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #999999e3;
+    font-size: 1.38rem;
+    transition: .3s all linear;
+}
+
+.alert .icon
+{
+    width: 150px;
+    height: 98px;
+    clip-path: polygon(40% 0, 90% 0, 60% 100%, 10% 100%);
+    padding: .9rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.35rem;
+}
+
+@media (max-width: 480px)
+{
+  .alert-card {transform: scale(.4);}
+  .alert-card.active {right: -5.5rem;}
+  
+  @keyframes vibrar 
+  {
+    0%, 100% {transform: scale(.5) translateX(0);}
+    10%, 60% {transform: scale(.5) translateX(10px);}
+    20%, 70% {transform: scale(.5) translateX(-15px);}
+    40%, 80% {transform: scale(.5) translateX(15px);}
+    50%, 90% {transform: scale(.5) translateX(-10px);}
+  }
+}
