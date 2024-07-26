@@ -1,0 +1,140 @@
+* 
+{
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+   outline: 0;
+   transition: all 0.5s ease;
+}
+
+body 
+{
+   font-family: sans-serif;
+   background: #0D1117;
+}
+
+a 
+{
+   text-decoration: none;
+   color: #fff;
+}
+
+.container 
+{
+   height: 100vh;
+   width: 100vw;
+   display: grid;
+   place-items: center;
+}
+
+.calculator 
+{
+   position: relative;
+   height: auto;
+   width: auto;
+   padding: 20px;
+   border-radius: 10px;
+   border: 1px solid #2B3037;
+}
+
+#display 
+{
+   margin: 0 10px;
+   height: 100px;
+   width: auto;
+   max-width: 270px;
+   display: flex;
+   align-items: flex-end;
+   justify-content: flex-end;
+   font-size: 30px;
+   margin-bottom: 20px;
+   overflow-x: scroll;
+   border-bottom: 1px solid #2B3037;
+}
+
+#display::-webkit-scrollbar 
+{
+   display: block;
+   height: 3px;
+}
+
+button 
+{
+   height: 60px;
+   width: 60px;
+   border: 0;
+   border-radius: 30px;
+   margin: 5px;
+   font-size: 20px;
+   cursor: pointer;
+   transition: all 200ms ease;
+}
+
+button:hover {transform: scale(1.1);}
+
+button#equal {height: 130px;}
+
+.calculator {
+    background-color: #fff;
+}
+
+.calculator #display {
+   color: #0a1e23;
+}
+
+.calculator button#clear {
+   background-color: #ffd5d8;
+   color: #fc4552;
+}
+
+.calculator button.btn-number {
+   background-color: #c3eaff;
+   color: #000000;
+}
+
+.calculator button.btn-operator {
+   background-color: #ffd0fb;
+   color: #f967f3;
+}
+
+.calculator button.btn-equal {
+   background-color: #adf9e7;
+   color: #000;
+}
+
+/* Tema Dark */
+
+.calculator.dark 
+{
+   background-color: #0D1117;
+}
+
+.calculator.dark #display 
+{
+   color: #f8fafb;
+}
+
+.calculator.dark button#clear 
+{
+   background-color: #FF308350;
+   color: #FF3083;
+}
+
+.calculator.dark button.btn-number 
+{
+   background-color: #2B303750;
+   color: #677384;
+   border: 1px solid #2B3037;
+}
+
+.calculator.dark button.btn-operator 
+{
+   background-color: #F7E99F50;
+   color: #F7E99F;
+}
+
+.calculator.dark button.btn-equal 
+{
+   background-color: #FFBC7E50;
+   color: #FFBC7E;
+}
