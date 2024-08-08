@@ -1,0 +1,273 @@
+/* Import(s) */
+/* Mixin(s) */
+/* Font(s) */
+@import url("https://fonts.googleapis.com/css2?family=Cairo+Play:wght@200..1000&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 8% 0 8%;
+  overflow: hidden;
+}
+
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  margin: 30px 0;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.menu-icon {
+  display: none;
+  flex-direction: column;
+  width: 70px;
+  z-index: 3;
+  scale: 0.55;
+  cursor: pointer;
+}
+
+.menu-icon .line {
+  background: #333;
+  border-radius: 10px;
+  height: 7px;
+  margin: 7px 0;
+  transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+.line:nth-of-type(1) {
+  width: 50%;
+}
+
+.line:nth-of-type(2) {
+  width: 100%;
+}
+
+.line:nth-of-type(3) {
+  width: 75%;
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox]:checked ~ .line:nth-of-type(1) {
+  transform-origin: bottom;
+  transform: translate(4px, 6px) rotatez(45deg);
+}
+
+input[type=checkbox]:checked ~ .line:nth-of-type(2) {
+  transform-origin: top;
+  transform: translate(0px, 0px) rotatez(-45deg);
+}
+
+input[type=checkbox]:checked ~ .line:nth-of-type(3) {
+  transform-origin: bottom;
+  transform: translate(30px, -10px) rotatez(45deg);
+  width: 50%;
+}
+
+nav {
+  flex: 1;
+  text-align: right;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 30px;
+}
+
+nav ul li a {
+  color: #000000;
+  font-size: 14px;
+  position: relative;
+}
+
+nav ul li a::before {
+  position: absolute;
+  content: "";
+  inset: auto auto -10px 0;
+  width: 0;
+  height: 2px;
+  background: #000000;
+  transition: 0.5s all ease-in-out;
+}
+
+nav ul li a:hover::before {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 100px 0;
+}
+.row .col-1 {
+  flex-basis: 40%;
+  position: relative;
+  margin-left: 50px;
+}
+.row .col-1::after {
+  position: absolute;
+  content: "";
+  inset: 8px -40px;
+  width: 10px;
+  height: 57%;
+  background: #0070D2;
+}
+.row .col-1 h2 {
+  font-size: 54px;
+  color: #333333;
+}
+.row .col-1 h3 {
+  font-family: "Cairo Play";
+  font-size: 25px;
+  color: #0070D2;
+  font-weight: 800;
+  margin: 20px 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+.row .col-1 p {
+  font-size: 16px;
+  color: #333333;
+}
+.row .col-1 h4 {
+  margin: 30px 0;
+  font-size: 20px;
+}
+.row .col-1 button {
+  width: 140px;
+  border: none;
+  padding: 12px 10px;
+  outline: none;
+  color: #ffffff;
+  background: #0070D2;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.row .col-2 {
+  position: relative;
+  flex-basis: 60%;
+  display: flex;
+  align-items: center;
+}
+.row .col-2 .controller {
+  width: 90%;
+  z-index: 1;
+}
+.row .col-2 .color-box {
+  position: absolute;
+  inset: 0 0 auto auto;
+  height: 100%;
+  width: 80%;
+  z-index: 0;
+  transform: translateX(150px);
+  overflow: hidden;
+  background: #000000;
+}
+.row .col-2 .color-box #bg-video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.5;
+}
+
+.social-links {
+  width: 20px;
+  height: 100px;
+  position: absolute;
+  inset: calc(50% - 50px) auto auto 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.social-links img {
+  height: 13px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+  nav ul {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    background: #000000;
+    inset: 0;
+    z-index: 2;
+    transition: 0.5s all ease-in-out;
+    padding: 0 1rem;
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+  nav ul li a {
+    color: #ffffff;
+    font-size: 15px;
+  }
+  nav ul.active {
+    padding: 1rem;
+    height: 100vh;
+  }
+  .menu-icon {
+    display: flex;
+  }
+  .menu-icon .line {
+    color: #333333;
+  }
+  .menu-icon input[type=checkbox]:checked ~ .line {
+    background: #ffffff;
+  }
+  .row {
+    flex-direction: column-reverse;
+    margin: 50px 0;
+  }
+  .row .col-1 {
+    flex-basis: 100%;
+  }
+  .row .col-1 h2 {
+    font-size: 35px;
+  }
+  .row .col-1 h3 {
+    font-size: 15px;
+  }
+  .row .col-2 {
+    flex-basis: 100%;
+    margin-bottom: 50px;
+  }
+  .row .col-2 .controller {
+    width: 77%;
+  }
+  .row .col-2 .color-box {
+    transform: translateX(75px);
+  }
+}
+@media only screen and (max-width: 430px) {
+  .col-1::after {
+    display: none;
+  }
+}/*# sourceMappingURL=style.css.map */
