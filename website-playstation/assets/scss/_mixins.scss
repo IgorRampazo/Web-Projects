@@ -1,0 +1,18 @@
+/* Mixin(s) */
+@mixin show($display, $justify, $align, $direction)
+{
+   display: $display;
+   justify-content: $justify;
+   align-items: $align;
+   flex-direction: $direction;
+}
+
+@mixin anime_btn($origin, $rotatez, $width, $x, $y) 
+{
+   transform-origin: $origin;
+   transform: translate($x, $y) rotatez($rotatez);
+   @if $width 
+   {
+      width: $width;
+   }
+}

@@ -1,0 +1,280 @@
+/* Import(s) */
+@import './mixins';
+@import './variables';
+@import './fonts';
+
+*
+{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   text-decoration: none;
+   list-style: none;
+   font-family: Arial, Helvetica, sans-serif;
+}
+
+.container
+{
+   width: 100%;
+   min-height: 100vh;
+   padding: 0 8% 0 8%;
+   overflow: hidden;
+}
+
+.navbar
+{
+   width: 100%;
+   @include show(flex, null, center, null);
+}
+
+.logo
+{
+   width: 40px;
+   margin: 30px 0;
+   z-index: 3;
+   cursor: pointer;
+}
+
+.menu-icon
+{
+   @include show(none, null, null, column);
+   width: 70px;
+   z-index: 3;
+   scale: .55;
+   cursor:pointer;
+}
+
+.menu-icon .line
+{
+   background: #333;
+   border-radius:10px;
+   height: 7px;
+   margin: 7px 0;
+   transition: .4s  cubic-bezier(0.68, -0.6, 0.32, 1.6);
+}
+
+
+.line:nth-of-type(1) {width:50%;}
+.line:nth-of-type(2) {width:100%;}
+.line:nth-of-type(3) {width:75%;}
+
+
+input[type="checkbox"]{display:none;}
+
+input[type="checkbox"]:checked ~ .line:nth-of-type(1) {@include anime_btn(bottom, 45deg, null, 4px, 6px);}
+input[type="checkbox"]:checked ~ .line:nth-of-type(2) {@include anime_btn(top, -45deg, null, 0px, 0px);}
+input[type="checkbox"]:checked ~ .line:nth-of-type(3) {@include anime_btn(bottom, 45deg, 50%, 30px, -10px);}
+
+nav
+{
+   flex: 1;
+   text-align: right;
+}
+
+nav ul li
+{
+   display: inline-block;
+   margin-right: 30px;
+}
+
+nav ul li a
+{
+   color: $color_c;
+   font-size: 14px;
+   position: relative;
+}
+
+nav ul li a::before
+{
+   position: absolute;
+   content: '';
+   inset: auto auto -10px 0;
+   width: 0;
+   height: 2px;
+   background: $color_c;
+   transition: .5s all ease-in-out;
+}
+
+nav ul li a:hover::before {width: 100%;}
+
+.row
+{
+   @include show(flex, space-between, center, null);
+   margin: 100px 0;
+
+   & .col-1
+   {
+      flex-basis: 40%;
+      position: relative;
+      margin-left: 50px;
+
+      &::after
+      {
+         position: absolute;
+         content: '';
+         inset: 8px -40px;
+         width: 10px;
+         height: 57%;
+         background: $color_d;
+      }
+
+      & h2 
+      {
+         font-size: 54px;
+         color: $color_b;
+      }
+
+      & h3
+      {
+         font-family: 'Cairo Play';
+         font-size: 25px;
+         color: $color_d;
+         font-weight: 800;
+         margin: 20px 0 10px;
+         text-transform: uppercase;
+         letter-spacing: 1.5px;
+      }
+
+      & p
+      {
+         font-size: 16px;
+         color: $color_b;
+      }
+
+      & h4
+      {
+         margin: 30px 0;
+         font-size: 20px;
+      }
+
+      & button
+      {
+         width: 140px;
+         border: none;
+         padding: 12px 10px;
+         outline: none;
+         color: $color_a;
+         background: $color_d;
+         letter-spacing: 1px;
+         cursor: pointer;
+      }
+   }
+
+   & .col-2
+   {
+      position: relative;
+      flex-basis: 60%;
+      @include show(flex, null, center, null);
+
+      & .controller
+      {
+         width: 90%;
+         z-index: 1;
+      }
+
+      & .color-box
+      {
+         position: absolute;
+         inset: 0 0 auto auto;
+         height: 100%;
+         width: 80%;
+         z-index: 0;
+         transform: translateX(150px);
+         overflow: hidden;
+         background: $color_c;
+
+         & #bg-video
+         {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .5;
+         }
+      }
+   }
+}
+
+.social-links
+{
+   width: 20px;
+   height: 100px;
+   position: absolute;
+   inset: calc(50% - 50px) auto auto 25px;
+   @include show(flex, center, center, column);
+
+   & img
+   {
+      height: 13px;
+      margin: 20px;
+      cursor: pointer;
+   }
+}
+
+@media only screen and (max-width: 800px)
+{
+   nav ul
+   {
+      position: absolute;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      background: $color_c;
+      inset: 0;
+      z-index: 2;
+      transition: .5s all ease-in-out;
+      padding: 0 1rem;
+      gap: 1rem;
+      @include show(flex, center, center, column);
+
+      & li
+      {
+         display: block;
+         margin: 10px 0;
+
+         & a
+         {
+            color: $color_a;
+            font-size: 15px;
+         }
+      }
+
+      &.active
+      {
+         padding: 1rem;
+         height: 100vh;
+      }
+   }
+
+   .menu-icon 
+   {
+      display: flex;
+      & .line {color: $color_b;}
+
+      & input[type="checkbox"]:checked ~ .line {background: $color_a;}
+   }
+
+   .row
+   {
+      flex-direction: column-reverse;
+      margin: 50px 0;
+   
+      .col-1 
+      {
+         flex-basis: 100%;
+
+         h2 {font-size: 35px;}
+         h3 {font-size: 15px;}
+      }
+
+      .col-2
+      {
+         flex-basis: 100%;
+         margin-bottom: 50px;
+
+         & .controller {width: 77%;}
+         & .color-box {transform: translateX(75px);}
+      }
+   }
+}
+
+@media only screen and (max-width: 430px) {.col-1::after {display: none;}}
